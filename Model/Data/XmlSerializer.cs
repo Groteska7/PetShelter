@@ -45,16 +45,16 @@ public class XmlSerializer : Serializer
     /// <summary>
     /// Deserialize an XML string to an object
     /// </summary>
-    public override T? Deserialize<T>(string data)
+    public override T Deserialize<T>(string data)
     {
         if (string.IsNullOrEmpty(data))
-            return default;
+            return default!;
 
         using var stringReader = new StringReader(data);
         using var xmlReader = XmlReader.Create(stringReader);
 
         var serializer = new XmlSerializerFactory().CreateSerializer(typeof(T));
-        return (T?)serializer.Deserialize(xmlReader);
+        return (T)serializer.Deserialize(xmlReader)!;
     }
 
     /// <summary>
@@ -78,16 +78,16 @@ public class XmlSerializer : Serializer
     /// <summary>
     /// Deserialize an XML string to a list of objects
     /// </summary>
-    public override List<T>? DeserializeList<T>(string data)
+    public override List<T> DeserializeList<T>(string data)
     {
         if (string.IsNullOrEmpty(data))
-            return default;
+            return default!;
 
         using var stringReader = new StringReader(data);
         using var xmlReader = XmlReader.Create(stringReader);
 
         var serializer = new XmlSerializerFactory().CreateSerializer(typeof(List<T>));
-        return (List<T>?)serializer.Deserialize(xmlReader);
+        return (List<T>)serializer.Deserialize(xmlReader)!;
     }
 
     /// <summary>

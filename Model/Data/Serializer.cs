@@ -13,7 +13,7 @@ public abstract class Serializer
     /// <summary>
     /// Abstract method for deserializing a string to an object
     /// </summary>
-    public abstract T? Deserialize<T>(string data);
+    public abstract T Deserialize<T>(string data);
 
     /// <summary>
     /// Abstract method for serializing a list of objects
@@ -23,7 +23,7 @@ public abstract class Serializer
     /// <summary>
     /// Abstract method for deserializing a list of objects
     /// </summary>
-    public abstract List<T>? DeserializeList<T>(string data);
+    public abstract List<T> DeserializeList<T>(string data);
 
     /// <summary>
     /// Save data to a file
@@ -37,10 +37,10 @@ public abstract class Serializer
     /// <summary>
     /// Load data from a file
     /// </summary>
-    public T? LoadFromFile<T>(string filePath)
+    public T LoadFromFile<T>(string filePath)
     {
         if (!File.Exists(filePath))
-            return default;
+            return default!;
 
         string content = File.ReadAllText(filePath);
         return Deserialize<T>(content);
@@ -58,10 +58,10 @@ public abstract class Serializer
     /// <summary>
     /// Generic method for loading a list from file
     /// </summary>
-    public List<T>? LoadListFromFile<T>(string filePath)
+    public List<T> LoadListFromFile<T>(string filePath)
     {
         if (!File.Exists(filePath))
-            return default;
+            return default!;
 
         string content = File.ReadAllText(filePath);
         return DeserializeList<T>(content);

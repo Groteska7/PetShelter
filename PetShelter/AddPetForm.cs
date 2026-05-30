@@ -238,10 +238,10 @@ public class AddPetForm : Form
                 _cboFurType.Visible = true;
                 foreach (Control ctrl in _grpAdditional.Controls)
                 {
-                    if (ctrl is Label lbl && lbl.Text == "Длина ушей (см):")
-                        lbl.Visible = true;
-                    if (ctrl is Label lbl && lbl.Text == "Тип шерсти:")
-                        lbl.Visible = true;
+                    if (ctrl is Label label && label.Text == "Длина ушей (см):")
+                        label.Visible = true;
+                    if (ctrl is Label label2 && label2.Text == "Тип шерсти:")
+                        label2.Visible = true;
                 }
                 _lblAdditional.Text = "Для кроликов укажите длину ушей и тип шерсти.";
                 break;

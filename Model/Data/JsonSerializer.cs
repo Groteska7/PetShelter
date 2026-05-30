@@ -31,12 +31,12 @@ public class JsonSerializer : Serializer
     /// <summary>
     /// Deserialize a JSON string to an object
     /// </summary>
-    public override T? Deserialize<T>(string data)
+    public override T Deserialize<T>(string data)
     {
         if (string.IsNullOrEmpty(data))
-            return default;
+            return default!;
 
-        return JsonConvert.DeserializeObject<T>(data, _settings);
+        return JsonConvert.DeserializeObject<T>(data, _settings)!;
     }
 
     /// <summary>
@@ -50,12 +50,12 @@ public class JsonSerializer : Serializer
     /// <summary>
     /// Deserialize a JSON string to a list of objects
     /// </summary>
-    public override List<T>? DeserializeList<T>(string data)
+    public override List<T> DeserializeList<T>(string data)
     {
         if (string.IsNullOrEmpty(data))
-            return default;
+            return default!;
 
-        return JsonConvert.DeserializeObject<List<T>>(data, _settings);
+        return JsonConvert.DeserializeObject<List<T>>(data, _settings)!;
     }
 
     /// <summary>
