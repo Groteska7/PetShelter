@@ -1,0 +1,39 @@
+<Window x:Class="PetShelter.PetsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PetShelter - Список питомцев" 
+        Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Info Label -->
+        <Label Grid.Row="0" x:Name="LblInfo" FontSize="14" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="1" x:Name="DataGridPets" AutoGenerateColumns="False" 
+                  IsReadOnly="True" SelectionMode="Single" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Кличка" Binding="{Binding Name}" Width="120"/>
+                <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="70"/>
+                <DataGridTextColumn Header="Вес (кг)" Binding="{Binding Weight, StringFormat=F1}" Width="80"/>
+                <DataGridTextColumn Header="Вид" Binding="{Binding TypeName}" Width="80"/>
+                <DataGridTextColumn Header="Клаустрофобия" Binding="{Binding ClaustrophobiaText}" Width="120"/>
+                <DataGridTextColumn Header="Приют" Binding="{Binding ShelterName}" Width="150"/>
+                <DataGridTextColumn Header="Доп. информация" Binding="{Binding AdditionalInfo}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Buttons Panel -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button x:Name="BtnAddPet" Content="Добавить питомца" Width="130" Margin="0,0,10,0" Click="BtnAddPet_Click"/>
+            <Button x:Name="BtnRemovePet" Content="Удалить питомца" Width="130" Margin="0,0,10,0" Click="BtnRemovePet_Click"/>
+            <Button Content="Сохранить отчет" Width="130" Margin="0,0,10,0" Click="BtnSaveReport_Click"/>
+            <Button Content="Закрыть" Width="100" Click="BtnClose_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

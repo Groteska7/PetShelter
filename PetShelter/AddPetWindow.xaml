@@ -1,0 +1,137 @@
+<Window x:Class="PetShelter.AddPetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавить питомца" 
+        Height="500" Width="450"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Name -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Кличка:" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" x:Name="TxtName" Height="25" Margin="5"/>
+        </Grid>
+
+        <!-- Age -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Возраст (лет):" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" x:Name="TxtAge" Height="25" Margin="5" Text="1"/>
+        </Grid>
+
+        <!-- Weight -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Вес (кг):" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" x:Name="TxtWeight" Height="25" Margin="5" Text="5"/>
+        </Grid>
+
+        <!-- Type -->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Вид животного:" VerticalAlignment="Center"/>
+            <ComboBox Grid.Column="1" x:Name="CboType" Height="25" Margin="5" SelectionChanged="CboType_SelectionChanged">
+                <ComboBoxItem Content="Cat" IsSelected="True"/>
+                <ComboBoxItem Content="Dog"/>
+                <ComboBoxItem Content="Rabbit"/>
+            </ComboBox>
+        </Grid>
+
+        <!-- Claustrophobia -->
+        <CheckBox Grid.Row="4" x:Name="ChkClaustrophobia" Content="Клаустрофобия" Margin="5,10,5,5"/>
+
+        <!-- Additional Info GroupBox -->
+        <GroupBox Grid.Row="5" Header="Дополнительно" Margin="0,10,0,0">
+            <Grid x:Name="GrpAdditional" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Cat fields -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="CatFields" Orientation="Vertical">
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Цвет шерсти:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="TxtFurColor" Height="25" Margin="5"/>
+                    </Grid>
+                    <CheckBox x:Name="ChkNeutered" Content="Стерилизован/а"/>
+                </StackPanel>
+
+                <!-- Dog fields -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="DogFields" Orientation="Vertical" Visibility="Collapsed">
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Порода:" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="TxtBreed" Height="25" Margin="5"/>
+                    </Grid>
+                    <CheckBox x:Name="ChkTrained" Content="Дрессирован"/>
+                </StackPanel>
+
+                <!-- Rabbit fields -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="RabbitFields" Orientation="Vertical" Visibility="Collapsed">
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Длина ушей (см):" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" x:Name="TxtEarLength" Height="25" Margin="5" Text="10"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Тип шерсти:" VerticalAlignment="Center"/>
+                        <ComboBox Grid.Column="1" x:Name="CboFurType" Height="25" Margin="5">
+                            <ComboBoxItem Content="Short" IsSelected="True"/>
+                            <ComboBoxItem Content="Long"/>
+                            <ComboBoxItem Content="Rex"/>
+                        </ComboBox>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Добавить" Width="100" Margin="0,10,10,0" Click="BtnOk_Click"/>
+            <Button Content="Отмена" Width="100" Margin="10,10,0,0" Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
